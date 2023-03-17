@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная страница</title>
+  {% block css %}
+    <link rel="stylesheet" href="{% static 'mainpage/styles/style.css' %}">
+  {% endblock %}
+</head>
+<body>
+  <div id="header"></div>
+  <div id="main-part">
+    {% for i in news %}
+      <div id="news-panel">
+         <h2 class="new-title">{{ i.title }}</h2>
+         <p class="new-anons">{{ i.anons }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  <div id="left-part">
+    <div id="home-link" class="left-link">
+      <a href="{% url 'home' %}">Главная</a>
+    </div>
+    <div id="reg-link" class="left-link">
+      <a href="{% url 'reg' %}">Регистрация</a>
+    </div>
+    <div id="news-link" class="left-link">
+      <a href="{% url 'createnew' %}">Создать новость</a>
+    </div>   
+  </div>
+</body>
+</html>
